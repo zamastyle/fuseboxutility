@@ -197,8 +197,7 @@ class FuseBoxConnector(phantom.BaseConnector):
                 endpoint = f'rest/decided_list/{list_name}'
                 payload = json.dumps({"content": list_content})
                 response = self._post_update(payload, endpoint)
-                status_code = response.status_code
-                if 199 < status_code < 300:
+                if response:
                     self.__print('List successfully pruned', True)
                     return action_result.set_status(phantom.APP_SUCCESS, 'List successfully pruned')
                 else:
