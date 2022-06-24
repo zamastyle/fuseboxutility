@@ -25,11 +25,12 @@ class FuseBoxConnector(phantom.BaseConnector):
             message = str(value)
         except:
             pass
-        if print_debug or self.is_polling_action:
-            self.debug_print(self.__class__.__name__, message)
+        if is_debug and not print_debug:
+            return
+        else:
             self.save_progress(message)
-        elif not is_debug:
-            self.save_progress(message)
+            if self.is_polling_action:
+                self.debug_print(self.__class__.__name__, message)
 
     def _get_base_url(self):
         self.__print("_get_base_url()", True)
