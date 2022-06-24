@@ -111,7 +111,7 @@ class FuseBoxConnector(phantom.BaseConnector):
         action_result = self.add_action_result(ActionResult(dict(param)))
         try:
             list_name = self.get_config()['dedicated_custom_list']
-            unique_string = param.get('unique_indentifier')
+            unique_string = param.get('unique_identifier')
             playbook_name = self._get_playbook_name()
             list_data = self._get_list_data(list_name)
             for row in list_data:
