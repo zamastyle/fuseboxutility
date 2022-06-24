@@ -202,7 +202,7 @@ class FuseBoxConnector(phantom.BaseConnector):
                     return action_result.set_status(phantom.APP_SUCCESS, 'List successfully pruned')
                 else:
                     self.__print(f'List pruning failed with {status_code}', False)
-                    return action_result.set_status(phantom.APP_ERROR, f'List pruning failed with {status_code}')
+                    return action_result.set_status(phantom.APP_ERROR, f'List pruning failed')
         self.__print('No list pruning required', True)
         return action_result.set_status(phantom.APP_SUCCESS, 'No list pruning required')
 
