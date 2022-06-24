@@ -118,7 +118,7 @@ class FuseBoxConnector(phantom.BaseConnector):
                 if playbook_name in row:
                     if unique_string in row:
                         self.__print(f'[{playbook_name}, {unique_string}] found in row, tripping fuse', True)
-                        action_result.add_data({'tripped_fuse': True, 'is_duplicate': True})
+                        action_result.add_data({'playbook_name': playbook_name, 'tripped_fuse': True, 'is_duplicate': True})
                         self.__print('tripped_fuse == True', True)
                         action_result.set_status(phantom.APP_SUCCESS, 'tripped_fuse == True')
                         return phantom.APP_SUCCESS
@@ -127,7 +127,7 @@ class FuseBoxConnector(phantom.BaseConnector):
             payload = self._build_append_payload(playbook_name, unique_string)
             success = self._post_update(payload, endpoint)
             if success:
-                action_result.add_data({'tripped_fuse': False, 'is_duplicate': False})
+                action_result.add_data({'playbook_name': playbook_name, 'tripped_fuse': False, 'is_duplicate': False})
                 self.__print('Successfully added new fuse', True)
                 action_result.set_status(phantom.APP_SUCCESS, 'Successfully added new fuse')
                 return phantom.APP_SUCCESS
