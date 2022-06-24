@@ -1,7 +1,7 @@
 {
     "appid": "fad3cfec-b8a0-4a0c-9579-c26bb4abde3a",
     "name": "Fuse Box",
-    "description": "Fuse Box is an app to help deconflict incoming events. Based on the identifying characteristics passed to the app, if the identifiers are duplicates of previously checked content, it will \"trip the fuse\". This app should have a concurrency limit of 1 so that race conditions are avoided. The polling operation in Fuse Box manages retention in the list. If the polling action is not scheduled, the retention limit in the configuration will not be respected.",
+    "description": "Fuse Box is an app to help deconflict incoming events. Based on the identifying characteristics passed to the app, if the identifiers are duplicates of previously checked content, it will \"trip the fuse\". This app should have a concurrency limit of 1 so that race conditions are avoided. The polling operation in Fuse Box manages retention in the list. If the polling action is not scheduled, the retention limit in the configuration will not be respected",
     "type": "devops",
     "product_vendor": "Mhike",
     "logo": "fusebox.svg",
@@ -19,7 +19,7 @@
     "app_wizard_version": "1.0.0",
     "configuration": {
         "dedicated_custom_list": {
-            "description": "Specify the name of the custom list that will be used as the data record for Fuse Box.",
+            "description": "Specify the name of the custom list that will be used as the data record for Fuse Box",
             "data_type": "string",
             "required": false,
             "value_list": [],
@@ -29,7 +29,7 @@
             "id": 0
         },
         "retention_limit": {
-            "description": "The number of days to retain records in the list. If Fuse Box runs slower than expected, lower retention.",
+            "description": "The number of days to retain records in the list. If Fuse Box runs slower than expected, lower retention",
             "data_type": "numeric",
             "required": false,
             "value_list": [],
@@ -39,7 +39,7 @@
             "id": 1
         },
         "https_port": {
-            "description": "Splunk SOAR HTTPS port if your instance uses one other than 443.",
+            "description": "Splunk SOAR HTTPS port if your instance uses one other than 443",
             "data_type": "string",
             "required": false,
             "value_list": [],
@@ -49,7 +49,7 @@
             "id": 2
         },
         "debug": {
-            "description": "Print debugging statements to log.",
+            "description": "Print debugging statements to log",
             "data_type": "boolean",
             "required": false,
             "default": false,
@@ -62,7 +62,7 @@
         {
             "action": "test connectivity",
             "identifier": "test_connectivity",
-            "description": "Validate the asset configuration for connectivity using supplied configuration.",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
             "type": "test",
             "read_only": true,
             "parameters": {},
@@ -71,8 +71,8 @@
         },
         {
             "action": "check fuse",
-            "description": "Check to see if this is the first with this unique identifier.",
-            "verbose": "Check to see if this is the first with this unique identifier. If so, it will return false for tripped_fuse (and is_duplicate if you don't like all this fuse shenanigans). Otherwise it will 'trip the fuse' and return True.",
+            "description": "Check to see if this is the first with this unique identifier",
+            "verbose": "Check to see if this is the first with this unique identifier. If so, it will return false for tripped_fuse (and is_duplicate if you don't like all this fuse shenanigans). Otherwise it will 'trip the fuse' and return True",
             "type": "generic",
             "identifier": "check_fuse",
             "read_only": false,
@@ -80,7 +80,7 @@
                 "unique_identifier": {
                     "data_type": "string",
                     "order": 0,
-                    "description": "A value that identifies collisions ie. an account, a user, or a combination of fields.",
+                    "description": "A value that identifies collisions ie. an account, a user, or a combination of fields",
                     "required": true,
                     "name": "unique_identifier"
                 }
@@ -123,8 +123,8 @@
         },
         {
             "action": "on poll",
-            "description": "Clean up the custom list based on retention day count.",
-            "verbose": "Use the retention limit in the configuration to remove old entries from the Fuse Box custom list. Failing to schedule this polling action will prevent the list from being cleaned up over time.",
+            "description": "Clean up the custom list based on retention day count",
+            "verbose": "Use the retention limit in the configuration to remove old entries from the Fuse Box custom list. Failing to schedule this polling action will prevent the list from being cleaned up over time",
             "type": "ingest",
             "identifier": "on_poll",
             "read_only": false,
