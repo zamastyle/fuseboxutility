@@ -82,7 +82,7 @@
                     "order": 0,
                     "description": "A value that identifies collisions ie. an account, a user, or a combination of fields.",
                     "required": true,
-                    "name": "unique_indentifier"
+                    "name": "unique_identifier"
                 }
             },
             "output": [
