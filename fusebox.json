@@ -1,7 +1,7 @@
 {
     "appid": "fad3cfec-b8a0-4a0c-9579-c26bb4abde3a",
     "name": "Fuse Box",
-    "description": "Fuse Box is an app to help deconflict incoming events. Based on the identifying characteristics passed to the app, if the identifiers are duplicates of previously checked content, it will \"trip the fuse\". This app should have a concurrency limit of 1 so that race conditions are avoided. The on poll operation in Fuse Box manages retention in the list. If the on poll action is not scheduled, the retention limit in the configuration will not be respected",
+    "description": "Fuse Box is an app to help deconflict incoming events. Based on the identifying characteristics passed to the app, if the identifiers are duplicates of previously checked content, it will \"trip the fuse\". This app should have a concurrency limit of 1 so that race conditions are avoided. The polling operation in Fuse Box manages retention in the list. If the polling action is not scheduled, the retention limit in the configuration will not be respected",
     "type": "devops",
     "product_vendor": "Mhike",
     "logo": "fusebox.svg",
