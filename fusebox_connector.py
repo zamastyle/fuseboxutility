@@ -192,7 +192,10 @@ class FuseBoxConnector(phantom.BaseConnector):
             self.__print(row, True)
             expired = int((datetime.now() - timedelta(days=retention_limit)).timestamp())
             self.__print(expired, True)
-            if int(row[2]) < expired and list_content.index(row) > 0:
+            if int(row[2]) < expired and list_content.index(row) == 0:
+                self.__print('No list pruning required', False)
+                return action_result.set_status(phantom.APP_SUCCESS, 'No list pruning required')
+            if int(row[2]) > expired and list_content.index(row) > 0:
                 self.__print(f'Found earliest unexpired row at row {list_content.index(row)}', False)
                 list_content = list_content[list_content.index(row):]
                 endpoint = f'rest/decided_list/{list_name}'
@@ -204,8 +207,6 @@ class FuseBoxConnector(phantom.BaseConnector):
                 else:
                     self.__print('List pruning failed', False)
                     return action_result.set_status(phantom.APP_ERROR, 'List pruning failed')
-        self.__print('No list pruning required', False)
-        return action_result.set_status(phantom.APP_SUCCESS, 'No list pruning required')
 
     def handle_action(self, param):
         action = self.get_action_identifier()
