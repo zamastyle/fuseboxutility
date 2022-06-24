@@ -1,0 +1,4 @@
+Fuse Box is designed to help deconflict events from within playbooks. By adding a "check fuse" action to your playbook, you can pre-check whether you have handled this event before.<br>
+Based on the identifying characteristics passed to the app, if the identifiers are duplicates of previously checked content, it will "trip the fuse" and you can decide how to proceed based on that information.<br>
+This app should have a concurrency limit of 1 so that race conditions are avoided.<br>
+The polling operation in Fuse Box manages retention in the list. If the polling action is not scheduled, the retention limit in the configuration will not be respected
