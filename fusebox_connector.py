@@ -192,7 +192,7 @@ class FuseBoxConnector(phantom.BaseConnector):
             expired = int((datetime.now() - timedelta(days=retention_limit)).timestamp())
             self.__print(expired, True)
             if int(row[2]) > expired and list_content.index(row) > 0:
-                self.__print('Found earliest unexpired row at row {list.index(row)}', True)
+                self.__print(f'Found earliest unexpired row at row {list_content.index(row)}', True)
                 list_content = list_content[list_content.index(row):]
                 endpoint = f'rest/decided_list/{list_name}'
                 payload = json.dumps({"content": list_content})
