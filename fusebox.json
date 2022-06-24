@@ -77,7 +77,7 @@
             "identifier": "check_fuse",
             "read_only": false,
             "parameters": {
-                "unique_indentifier": {
+                "unique_identifier": {
                     "data_type": "string",
                     "order": 0,
                     "description": "A value that identifies collisions ie. an account, a user, or a combination of fields",
