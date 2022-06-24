@@ -86,8 +86,21 @@
                 }
             },
             "output": [
+                summary.total_objects, action_result.status, action_result.message, summary.total_objects_successful
                 {
                     "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
                     "data_type": "string"
                 },
                 {
