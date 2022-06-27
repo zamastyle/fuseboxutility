@@ -73,7 +73,7 @@
             "action": "check fuse",
             "description": "Check to see if this is the first with this unique identifier",
             "verbose": "Check to see if this is the first with this unique identifier. If so, it will return false for tripped_fuse (and is_duplicate if you don't like all this fuse shenanigans). Otherwise it will 'trip the fuse' and return True.",
-            "type": "generic",
+            "type": "devops",
             "identifier": "check_fuse",
             "read_only": false,
             "parameters": {
