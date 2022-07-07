@@ -33,9 +33,12 @@ class FuseBoxConnector(phantom.BaseConnector):
         message = 'Failed to cast message to string'
         try:
             print_debug = self.get_config()['debug']
+        except:
+            pass
+        try:
             message = str(value)
-        except Exception as e:
-            self.debug_print("Exception while debug print: {}".format(e))
+        except:
+            pass
         if is_debug and not print_debug:
             return
         else:
@@ -48,8 +51,8 @@ class FuseBoxConnector(phantom.BaseConnector):
         port = 443
         try:
             port = self.get_config()['https_port']
-        except Exception as e:
-            self.debug_print("Exception occur while getting https_port. Exception: {}".format(e))
+        except:
+            pass
         return f'https://127.0.0.1:{port}'
 
     def _get_list_data(self, list_name):
@@ -80,7 +83,8 @@ class FuseBoxConnector(phantom.BaseConnector):
             else:
                 return None
         except Exception as e:
-            self.debug_print("Exception occur while getting rest data. Exception: {}".format(e))
+            self.__print("Exception occur while getting rest data. Exception:", False)
+            self.__print(e, False)
             return None
 
     def _get_playbook_name(self):
@@ -120,8 +124,7 @@ class FuseBoxConnector(phantom.BaseConnector):
         return data
 
     def _handle_check_fuse(self, param):
-        self.debug_print("In action handler for: {0}".format(self.get_action_identifier()))
-        self.__print('_handle_check_fuse()', True)
+        self.__print(f'In action handler for: {self.get_action_identifier()}', True)
         action_result = self.add_action_result(ActionResult(dict(param)))
         try:
             list_name = self.get_config()['dedicated_custom_list']
@@ -150,14 +153,13 @@ class FuseBoxConnector(phantom.BaseConnector):
                 action_result.set_status(phantom.APP_ERROR, 'Failed to add new fuse')
                 return phantom.APP_ERROR
         except Exception as e:
-            self.debug_print("Exception occur in check fuse action. Exception: {}".format(e))
             self.__print('Check Fuse failed with an error:', False)
+            self.__print(e, False)
             action_result.set_status(phantom.APP_ERROR, 'Failed to check fuse')
             return phantom.APP_ERROR
 
     def _handle_test_connectivity(self, param):
-        self.debug_print("In action handler for: {0}".format(self.get_action_identifier()))
-        self.__print("_handle_test_connectivity", True)
+        self.__print(f'In action handler for: {self.get_action_identifier()}', True)
         action_result = self.add_action_result(ActionResult(dict(param)))
         list_name = self.get_config()['dedicated_custom_list']
         list_endpoint = 'rest/decided_list'
@@ -196,8 +198,7 @@ class FuseBoxConnector(phantom.BaseConnector):
                 return action_result.set_status(phantom.APP_ERROR, 'Failed connection test')
 
     def _handle_on_poll(self, param):
-        self.debug_print("In action handler for: {0}".format(self.get_action_identifier()))
-        self.__print("_handle_on_poll", True)
+        self.__print(f'In action handler for: {self.get_action_identifier()}', True)
         self.is_polling_action = True
         action_result = self.add_action_result(ActionResult(dict(param)))
         list_name = self.get_config()['dedicated_custom_list']
